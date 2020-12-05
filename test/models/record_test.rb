@@ -2,7 +2,9 @@ require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
   def setup
-    @record = Record.new(title: "Example Record",
+    @shop = shops(:joes)
+
+    @record = @shop.records.build(title: "Example Record",
       artist: "Example Artist",
       year: 2000,
       price: 30)

@@ -1,9 +1,17 @@
 class Shop < ApplicationRecord
-  before_save { self.name = name.downcase,
-    self.city = city.downcase,
-    self.address = address.downcase }
+  has_many :records, dependent: :destroy
+
+  before_save { prep_for_db }
 
   validates(:name, presence: true)
   validates(:city, presence: true)
   validates(:address, presence: true, uniqueness: { scope: :city })
+
+  private
+  
+  def prep_for_db
+    name.downcase!
+    city.downcase!
+    address.downcase!
+  end
 end

@@ -36,6 +36,10 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   test "should destroy record" do
     delete record_path(@record)
     assert_response :success
+    
+    assert_raises(ActiveRecord::RecordNotFound) do
+      get record_path(@record)
+    end
   end
 
 end

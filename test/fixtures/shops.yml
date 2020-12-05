@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
-#   city: MyString
-#   address: MyString
+joes:
+  name: Joe's Records
+  city: Ottawa
+  address: 123 Bank Street
 
-# two:
-#   name: MyString
-#   city: MyString
-#   address: MyString
+bobs:
+  name: Bob's Vinyl Shop
+  city: New York
+  address: 12 Madison Avenue

@@ -1,18 +1,19 @@
 class RecordsController < ApplicationController
+  before_action :find_shop
+  before_action :find_record, only: [:show, :update, :destroy]
+  
   def index
-    @records = Record.all
+    @records = @shop.records
     render json: @records
   end
 
   def show
-    @record = Record.find(params[:id])
     render json: @record
   end
 
   def create
-    @record = Record.new(record_params)
+    @record = @shop.records.build(record_params)
     if @record.save
-      # handle successful save
       render json: @record
     else
       # return error
@@ -20,9 +21,7 @@ class RecordsController < ApplicationController
   end
 
   def update
-    @record = Record.find(params[:id])
     if @record.update(record_params)
-      # handle successful update
       render json: @record
     else
       # return error
@@ -30,11 +29,19 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    Record.find(params[:id]).destroy
-    render json: Record.all
+    @record.destroy
+    render json: @shop.records.all
   end
 
   private
+
+  def find_shop
+    @shop = Shop.find(params[:shop_id])
+  end
+
+  def find_record
+    @record = @shop.records.find_by(id: params[:id])
+  end
   
   def record_params
     params.require(:record).permit(:title, :artist, :year, :price)

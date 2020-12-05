@@ -1,4 +1,7 @@
 class Record < ApplicationRecord
+  belongs_to :shop
+
+  validates(:shop_id, presence: true)
   validates(:title, presence: true)
   validates(:artist, presence: true)
 
