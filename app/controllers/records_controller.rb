@@ -14,7 +14,7 @@ class RecordsController < ApplicationController
   def create
     @record = @shop.records.build(record_params)
     if @record.save
-      render json: @record
+      render json: @record, status: :created
     else
       render json: save_record_error, status: :bad_request
     end
