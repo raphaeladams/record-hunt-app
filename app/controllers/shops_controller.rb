@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      render json: @shop
+      render json: @shop, status: :created
     else
       render json: save_shop_error, status: :bad_request
     end

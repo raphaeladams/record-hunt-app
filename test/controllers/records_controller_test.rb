@@ -29,7 +29,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
         price: @record.price
       }
     }
-    assert_response :success
+    assert_response :created
   end
 
   test "should update record" do

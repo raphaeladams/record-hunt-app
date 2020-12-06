@@ -27,7 +27,7 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
         address: new_shop_address
       }
     }
-    assert_response :success
+    assert_response :created
   end
 
   test "should update shop" do
