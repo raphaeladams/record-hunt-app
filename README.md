@@ -1,5 +1,7 @@
 # Record Hunt App
 
+Raphael Adams
+
 An app that allows the user to look up record Shops, and the vinyl Records they have. It contains the following models:
 
 - A Shop model with attributes name, city, and address
