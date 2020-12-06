@@ -28,21 +28,9 @@ class ShopsController < ApplicationController
   end
 
   def destroy
-    @shop = Shop.find(params[:id])
-    @shop.records.each { |r| r.destroy }
     Shop.delete(params[:id])
     render json: Shop.all
   end
-
-
-
-
-  def records
-    @shop = Shop.find(params[:id])
-    render json: @shop.records
-  end
-
-
 
   private
 
@@ -53,7 +41,7 @@ class ShopsController < ApplicationController
   def save_shop_error
     { 
       status: "400", 
-      message: "Unable to save changes, city / address combination may be taken"
+      message: "Unable to save changes, city / address combination may be taken or shop details are invalid"
     }
   end
 end

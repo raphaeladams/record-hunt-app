@@ -16,7 +16,7 @@ class RecordsController < ApplicationController
     if @record.save
       render json: @record
     else
-      # return error
+      render json: save_record_error, status: :bad_request
     end
   end
 
@@ -24,7 +24,7 @@ class RecordsController < ApplicationController
     if @record.update(record_params)
       render json: @record
     else
-      # return error
+      render json: save_record_error, status: :bad_request
     end
   end
 
@@ -45,5 +45,12 @@ class RecordsController < ApplicationController
   
   def record_params
     params.require(:record).permit(:title, :artist, :year, :price)
+  end
+
+  def save_record_error
+    { 
+      status: "400", 
+      message: "Unable to save changes, record details invalid"
+    }
   end
 end

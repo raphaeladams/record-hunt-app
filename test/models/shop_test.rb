@@ -32,4 +32,12 @@ class ShopTest < ActiveSupport::TestCase
     shop_in_same_place.name = "Shop in Same Place"
     refute shop_in_same_place.valid?
   end
+
+  test "destroying shop destroys its records" do
+    @shop.save
+    @shop.records.create!(title: "1", artist: "The Beatles", year: 2000, price: 30)
+    assert_difference 'Record.count', -1 do
+      @shop.destroy
+    end
+  end
 end

@@ -3,17 +3,8 @@
 
 Rails.application.routes.draw do
   root 'shops#index'
-  # get 'records/show'
-  # post 'records/create'
-  # put 'records/update'
-  # delete 'records/destroy'
-  #resources :records, only: [:index, :show, :create, :update, :destroy]
   
   resources :shops, only: [:index, :show, :create, :update, :destroy] do
-    # member do
-    #   #get :records
-    #   # resources :records, only: [:index, :show, :create, :update, :destroy]
-    # end
     resources :records, only: [:index, :show, :create, :update, :destroy]
   end
 

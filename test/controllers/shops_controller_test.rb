@@ -16,18 +16,28 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create shop" do
-    post shops_path, params: { shop: { 
-      name: @shop.name,
-      city: @shop.city,
-      address: @shop.address } }
+    new_shop_name = "New Shop Name"
+    new_shop_city = "New Shop City"
+    new_shop_address = "New Shop Address"
+
+    post shops_path, params: {
+      shop: {
+        name: new_shop_name,
+        city: new_shop_city,
+        address: new_shop_address
+      }
+    }
     assert_response :success
   end
 
   test "should update shop" do
-    patch shop_path(@shop), params: { shop: { 
-      name: @shop.name,
-      city: @shop.city,
-      address: @shop.address } }
+    patch shop_path(@shop), params: {
+      shop: {
+        name: @shop.name,
+        city: @shop.city,
+        address: @shop.address
+      }
+    }
     assert_response :success
   end
 

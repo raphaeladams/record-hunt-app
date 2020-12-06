@@ -14,6 +14,11 @@ class RecordTest < ActiveSupport::TestCase
     assert @record.valid?
   end
 
+  test "shop id should be present" do
+    @record.shop_id = nil
+    refute @record.valid?
+  end
+
   test "title should not be blank" do
     @record.title = ""
     refute @record.valid?

@@ -2,44 +2,51 @@ require 'test_helper'
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @record = records(:animals)
+    @shop = shops(:joes)
+    @shop.records.create!(title: "III",
+      artist: "Led Zeppelin",
+      year: 1970,
+      price: 30)
+    @record = @shop.records.first
   end
 
   test "should get records index" do
-    get records_path
+    get shop_records_path(@shop)
     assert_response :success
   end
 
   test "should show record" do
-    get record_path(@record)
+    get url_for([@shop, @record])
     assert_response :success
   end
 
   test "should create record" do
-    post records_path, params: { record: { 
-      title: @record.title,
-      artist: @record.artist,
-      year: @record.year,
-      price: @record.price } }
+    post shop_records_path(@shop), params: {
+      record: {
+        title: @record.title,
+        artist: @record.artist,
+        year: @record.year,
+        price: @record.price
+      }
+    }
     assert_response :success
   end
 
   test "should update record" do
-    patch record_path(@record), params: { record: { 
-      title: @record.title,
-      artist: @record.artist,
-      year: @record.year,
-      price: @record.price } }
+    patch url_for([@shop, @record]), params: {
+      record: {
+        title: @record.title,
+        artist: @record.artist,
+        year: @record.year,
+        price: @record.price
+      }
+    }
     assert_response :success
   end
 
   test "should destroy record" do
-    delete record_path(@record)
+    delete url_for([@shop, @record])
     assert_response :success
-    
-    assert_raises(ActiveRecord::RecordNotFound) do
-      get record_path(@record)
-    end
+    assert_equal @shop.records.first, nil
   end
-
 end
