@@ -24,6 +24,9 @@ Bundler.require(*Rails.groups)
 
 module RecordHuntApp
   class Application < Rails::Application
+    # Make API only
+    config.api_only = true
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults(6.0)
 

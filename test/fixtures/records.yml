@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# animals:
+#   title: Animals
+#   artist: Pink Floyd
+#   year: 1977
+#   price: 30
+#   shop: joes
+
+# hemispheres:
+#   title: Hemispheres
+#   artist: Rush
+#   year: 1978
+#   price: 20
+#   shop: bobs

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+joes:
+  name: Joe's Records
+  city: Ottawa
+  address: 123 Bank Street
+
+bobs:
+  name: Bob's Vinyl Shop
+  city: New York
+  address: 12 Madison Avenue
